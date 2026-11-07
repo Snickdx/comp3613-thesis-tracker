@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}Milestone · Thesis tracking{% endblock %}
+
+{% block content %}
+<div class="landing">
+  <header class="landing-nav">
+    <a class="brand-wordmark" href="{{ url_for('index_view') }}">Milestone</a>
+    <div class="landing-nav-actions">
+      {% if user_logged_in %}
+      <a class="btn-landing btn-landing-ghost" href="{{ app_home }}">Open workspace</a>
+      <a class="btn-landing btn-landing-ghost" href="{{ url_for('logout') }}">Sign out</a>
+      {% else %}
+      <a class="btn-landing btn-landing-ghost" href="{{ url_for('login_view') }}">Sign in</a>
+      <a class="btn-landing btn-landing-primary" href="{{ url_for('register_view') }}">Get started</a>
+      {% endif %}
+    </div>
+  </header>
+
+  <main class="landing-main">
+    <section class="landing-hero">
+      <p class="landing-kicker">Thesis tracking</p>
+      <h1 class="brand-wordmark">Milestone</h1>
+      <p class="landing-lead">
+        Pair students with supervisors, keep feedback requests on a clear clock,
+        and record progress from first draft to final submission.
+      </p>
+      <div class="landing-cta">
+        {% if user_logged_in %}
+        <a class="btn-landing btn-landing-primary" href="{{ app_home }}">Continue</a>
+        {% else %}
+        <a class="btn-landing btn-landing-primary" href="{{ url_for('register_view') }}">Create account</a>
+        <a class="btn-landing btn-landing-ghost" href="{{ url_for('login_view') }}">Sign in</a>
+        {% endif %}
+      </div>
+    </section>
+
+    <ol class="spine" aria-label="Thesis timeline">
+      <li class="spine-step is-done">
+        <span class="spine-label">01 · Pairing</span>
+        <h2 class="spine-title">Student meets supervisor</h2>
+        <p class="spine-text">Coordinators match within each supervisor's capacity.</p>
+      </li>
+      <li class="spine-step is-done">
+        <span class="spine-label">02 · Submission</span>
+        <h2 class="spine-title">Draft goes in</h2>
+        <p class="spine-text">Chapters and drafts are filed against the pairing.</p>
+      </li>
+      <li class="spine-step">
+        <span class="spine-label">03 · Feedback</span>
+        <h2 class="spine-title">Review by due date</h2>
+        <p class="spine-text">Open requests surface what is waiting and what is late.</p>
+      </li>
+      <li class="spine-step">
+        <span class="spine-label">04 · Progress</span>
+        <h2 class="spine-title">The record builds</h2>
+        <p class="spine-text">Notes and events form a transcript of the thesis.</p>
+      </li>
+    </ol>
+  </main>
+
+  <footer class="landing-foot">
+    Demo accounts after <code>python manage.py init</code>:
+    <span class="seed-list">
+      <span><code>coord</code> / <code>coord-dev</code></span>
+      <span><code>super1</code> / <code>super-dev</code></span>
+      <span><code>super2</code> / <code>super-dev</code></span>
+      <span><code>student1</code> / <code>stud-dev</code></span>
+      <span><code>student2</code> / <code>stud-dev</code></span>
+      <span><code>student3</code> / <code>stud-dev</code></span>
+    </span>
+  </footer>
+</div>
+{% endblock %}

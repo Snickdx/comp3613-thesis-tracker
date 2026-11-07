@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Session expired · Milestone{% endblock %}
+
+{% block content %}
+<div class="err-shell">
+  <div class="err-panel">
+    <p class="err-code">401</p>
+    <h2>Session expired</h2>
+    <p>
+      Your session has ended or you do not have permission to view this page.
+      Please sign in again to continue.
+    </p>
+    <div class="d-grid">
+      <a href="{{ url_for('login_view') }}" class="btn btn-primary btn-lg" style="background: var(--brand-accent); border-color: var(--brand-accent); border-radius: var(--brand-radius);">
+        Return to sign in
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}
